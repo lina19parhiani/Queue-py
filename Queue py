@@ -1,0 +1,27 @@
+from collections import deque
+import time
+
+class PrinterQueue:
+    def __init__(self):
+        self.queue = deque()  # Menggunakan deque untuk antrian
+
+    def add_document(self, document):
+        self.queue.append(document)  # Menambahkan dokumen ke belakang antrian
+        print(f'Dokumen "{document}" telah ditambahkan ke antrian.')
+
+    def print_documents(self):
+        while self.queue:
+            current_document = self.queue.popleft()  # Mengambil dokumen dari depan antrian
+            print(f'Mencetak dokumen: "{current_document}"...')
+            time.sleep(2)  # Simulasi waktu pencetakan
+            print(f'Dokumen "{current_document}" telah dicetak.')
+
+# Contoh penggunaan
+printer = PrinterQueue()
+printer.add_document("Dokumen 1")
+printer.add_document("Dokumen 2")
+printer.add_document("Dokumen 3")
+
+print("Mulai mencetak dokumen...")
+printer.print_documents()
+print("Semua dokumen telah dicetak.")
